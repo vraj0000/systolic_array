@@ -81,7 +81,7 @@ Timing started at WNS = -0.261 ns and closed at +0.171 ns. The main fix was sett
 The host-side interface is a C program using the ftd2xx library. It opens the FTDI device, configures it at 12 MBaud, sends the input bytes, and reads the result back.
 
 ```bash
-gcc -o uart uart.c -lftd2xx
+gcc -o uart /src/C/uart.c -lftd2xx
 ./uart
 ```
 
