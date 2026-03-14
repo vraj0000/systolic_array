@@ -81,8 +81,8 @@ Timing started at WNS = -0.261 ns and closed at +0.171 ns. The main fix was sett
 The host-side interface is a C program using the ftd2xx library. It opens the FTDI device, configures it at 12 MBaud, sends the input bytes, and reads the result back.
 
 ```bash
-gcc -o uart /src/C/uart.c -lftd2xx
-./uart
+gcc -o uart_read /src/C/uart.c -lftd2xx
+./uart_read
 ```
 
 Input is two NxN matrices packed as 8-bit integers. The current test in `uart_host.c` sends an 8-byte sequence (a 2x2 test case) and prints the received bytes. To run a 16x16 multiplication, replace `pattern1` with your serialized matrix data and update the read/write lengths.
