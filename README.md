@@ -22,7 +22,7 @@ The array itself is controlled by an FSM with four states: `IDLE -> LOAD -> COMP
 
 ---
 
-- ## Module Hierarchy
+## Module Hierarchy
 
 ```
 top
@@ -70,16 +70,21 @@ The design was verified on hardware using Vivado ILA. Captures confirm:
 ---
 
 ## What I Learned
-
-Timing closure on real hardware: started at WNS = -0.261 ns and closed at +0.149 ns for 16x16 Systolic array.
-
-Signal replication to reduce fanout: `rx_ready` was fanning out to 4097 endpoints and blowing the timing budget. Fixed by setting `max_fanout = 64` which let Vivado replicate the register and distribute the load across shorter paths.
-
-Critical path analysis: used `report_timing` to trace the failing path, identified the PE MAC as the bottleneck, and inserted input and output pipeline stages to break the long combinational path.
-
-Pipeline stage placement: where you cut the path matters. Splitting at the multiplier boundary gave better slack than splitting at the adder output.
-
-Making the compute the dominant clock: pushing the systolic array to 120 MHz while keeping UART at 96 MHz keeps the bottleneck in the compute domain where it belongs.
+ 
+**Timing closure on real hardware:** started at WNS = -0.261 ns and closed at +0.149 ns for the 16x16 systolic array.
+ 
+**Fanout is a real timing killer:** `rx_ready` was fanning out to 4097 endpoints. The fix was setting `max_fanout = 64` which told Vivado to replicate the register and build a signal tree to distribute the load. Slack on those paths dropped from ~6.5 ns to ~4.8 ns after that one change.
+ 
+**Logic and path delay balance matters:** the give design sits close to 50/50 between logic delay and net delay on the critical path. Too much net delay means placement is poor. Too much logic delay means the combinational path is too deep and needs pipelining. The 16x16 came in balanced which was a good sign the systolic structure was placed and routed efficiently and the banch is matined throight out the scale form 2x2 to 16x16.
+ 
+**Critical path analysis and pipeline insertion:** used `report_timing` to trace the failing path, identified the PE MAC as the bottleneck, and inserted input and output pipeline stages to break the long combinational path. Where you cut matters too, splitting at the multiplier boundary gave better slack than splitting at the adder output.
+ 
+**Making the compute the dominant clock:** pushing the systolic array to 120 MHz while keeping UART at 96 MHz keeps the bottleneck in the compute domain where it belongs.
+ 
+**Verify in simulation before touching the FPGA:** debugging on hardware with ILA is slow. Every iteration means synthesis, implementation, bitstream generation, and programming. If you use ILA to debug the logic itself rather than integration you waste hours per bug. The right approach is to verify the model works correctly in simulation first (Verilator works well for this), then move to hardware knowing the only bugs left are integration level ones.
+ 
+**LLMs are useful but not enough on their own:** AI tools can generate RTL modules quickly but they do not account for fanout, logic depth, or timing closure. The designer still has to understand the architecture, plan the pipeline stages, and connect the modules correctly. A good workflow is to use LLMs to generate individual modules and then wire them up yourself with the timing and hierarchy in mind.
+ 
 
 ---
 
