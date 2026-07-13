@@ -40,7 +40,6 @@ top
       └── two_stage_sync
 ```
 
----
 
 ## Key Numbers
 
@@ -53,7 +52,7 @@ top
 | Throughput | 1.2 MBPS |
 | WNS (after optimization) | +0.149 ns |
 | Target device | Basys 3 (Artix-7) |
----
+
 Timing started at WNS = -0.261 ns and closed at +0.149 ns. The main fix was setting `max_fanout = 64` on `rx_ready`, which was fanning out to 4097 endpoints and blowing the timing budget on those paths. Adding that line made a tree structure for Write enable singal.
 
 
