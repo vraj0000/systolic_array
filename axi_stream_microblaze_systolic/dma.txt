@@ -1,0 +1,369 @@
+--- Done ---
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (100 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 7.54 us
+Software (MicroBlaze naive matmul) avg time: 9.89 us
+Speedup: 1.31x
+Throughput: 2.02 MB/s
+
+
+Hardware result:
+19 22 
+43 50 
+
+Software result:
+19 22 
+
+43 50 
+
+--- Done ---
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (100 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 7.54 us
+Software (MicroBlaze naive matmul) avg time: 12.51 us
+Speedup: 1.65x
+Throughput: 2.02 MB/s
+
+Hardware result:
+9800 9800 
+9800 9800 
+
+Software result:
+9800 9800 
+9800 9800 
+
+--- Done ---
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (100 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 7.54 us
+Software (MicroBlaze naive matmul) avg time: 12.51 us
+Speedup: 1.65x
+Throughput: 2.02 MB/s
+
+Hardware result:
+9800 9800 
+9800 9800 
+
+Software result:
+9800 9800 
+9800 9800 
+
+--- Done ---
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (100 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 7.54 us
+Software (MicroBlaze naive matmul) avg time: 10.42 us
+Speedup: 1.38x
+
+Throughput: 2.02 MB/s
+
+Hardware result:
+180 180 
+180 180 
+
+Software result:
+180 180 
+
+180 180 
+
+--- Done ---
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (100 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 7.54 us
+Software (MicroBlaze naive matmul) avg time: 12.51 us
+
+Speedup: 1.65x
+Throughput: 2.02 MB/s
+
+Hardware result:
+214 217 
+498 505 
+
+Software result:
+214 217 
+498 505 
+
+--- Done ---
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (100 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 7.54 us
+Software (MicroBlaze naive matmul) avg time: 12.51 us
+Speedup: 1.65x
+Throughput: 2.02 MB/s
+
+
+Hardware result:
+214 217 
+498 505 
+
+Software result:
+214 217 
+498 505 
+
+--- Done ---
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (100 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 7.54 us
+Software (MicroBlaze naive matmul) avg time: 13.29 us
+Speedup: 1.76x
+Throughput: 2.02 MB/s
+
+Hardware result:
+33671 33930 
+34191 34454 
+
+Software result:
+33671 33930 
+34191 34454 
+
+--- Done ---
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (1000 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 7.54 us
+Software (MicroBlaze naive matmul) avg time: 13.28 us
+Speedup: 1.76x
+Throughput: 2.02 MB/s
+
+Hardware result:
+
+33671 33930 
+34191 34454 
+
+Software result:
+33671 33930 
+
+34191 34454 
+
+--- Done ---
+
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (1000 runs, 2x2 matrix) ---
+
+Hardware (DMA + systolic array) avg time: 7.54 us
+Software (MicroBlaze naive matmul) avg time: 12.98 us
+Speedup: 1.72x
+Throughput: 2.02 MB/s
+
+Hardware result:
+57225 57720 
+58217 58716 
+
+Software result:
+57225 57720 
+58217 58716 
+
+--- Done ---
+
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (1000 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 7.54 us
+Software (MicroBlaze naive matmul) avg time: 12.92 us
+Speedup: 1.71x
+Throughput: 2.02 MB/s
+
+Hardware result:
+61221 61724 
+62229 62736 
+
+Software result:
+61221 61724 
+62229 62736 
+
+--- Done ---
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (1000 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 7.54 us
+Software (MicroBlaze naive matmul) avg time: 12.90 us
+Speedup: 1.71x
+Throughput: 2.02 MB/s
+
+
+Hardware result:
+63496 63496 
+63496 63496 
+
+Software result:
+63496 63496 
+63496 63496 
+
+--- Done ---
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (1000 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 7.54 us
+Software (MicroBlaze naive matmul) avg time: 13.07 us
+Speedup: 1.73x
+Throughput: 2.02 MB/s
+
+Hardware result:
+65522 65522 
+
+65522 65522 
+
+
+Software result:
+65522 65522 
+65522 65522 
+
+
+--- Done ---
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (1000 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 7.54 us
+Software (MicroBlaze naive matmul) avg time: 13.07 us
+Speedup: 1.73x
+Throughput: 2.02 MB/s
+
+Hardware result:
+712 712 
+712 712 
+
+Software result:
+712 712 
+712 712 
+
+--- Done ---
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (1000 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 7.54 us
+Software (MicroBlaze naive matmul) avg time: 13.07 us
+Speedup: 1.73x
+Throughput: 2.02 MB/s
+
+Hardware result:
+712 712 
+712 712 
+
+Software result:
+712 712 
+712 712 
+
+
+--- Done ---
+
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (1000 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 7.54 us
+Software (MicroBlaze naive matmul) avg time: 13.07 us
+Speedup: 1.73x
+Throughput: 2.02 MB/s
+
+
+Hardware result:
+712 712 
+712 712 
+
+Software result:
+712 712 
+712 712 
+
+--- Done ---
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (100 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 8.27 us
+  -- Setup (register writes) avg: 5.78 us
+  -- Poll-wait (transfer + poll loop) avg: 2.49 us
+  -- (Poll-wait includes real AXI transfer time, but also
+      polling loop overhead -- only an ILA capture of
+      TVALID/TREADY/TLAST gives true cycle-accurate wire time)
+Software (MicroBlaze naive matmul) avg time: 9.89 us
+Speedup: 1.19x
+Throughput: 1.84 MB/s
+
+Hardware result:
+
+19 22 
+43 50 
+
+
+Software result:
+19 22 
+43 50 
+
+--- Done ---
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (100 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 8.27 us
+  -- Setup (register writes) avg: 5.78 us
+  -- Poll-wait (transfer + poll loop) avg: 2.49 us
+  -- (Poll-wait includes real AXI transfer time, but also
+      polling loop overhead -- only an ILA capture of
+      TVALID/TREADY/TLAST gives true cycle-accurate wire time)
+Software (MicroBlaze naive matmul) avg time: 9.89 us
+Speedup: 1.19x
+Throughput: 1.84 MB/s
+
+Hardware result:
+19 22 
+43 50 
+
+Software result:
+
+19 22 
+43 50 
+
+
+--- Done ---
+
+--- Systolic Array DMA Timing Benchmark ---
+
+--- Results (100 runs, 2x2 matrix) ---
+Hardware (DMA + systolic array) avg time: 8.27 us
+  -- Setup (register writes) avg: 5.78 us
+  -- Poll-wait (transfer + poll loop) avg: 2.49 us
+  -- (Poll-wait includes real AXI transfer time, but also
+      polling loop overhead -- only an ILA capture of
+
+      TVALID/TREADY/TLAST gives true cycle-accurate wire time)
+Software (MicroBlaze naive matmul) avg time: 9.89 us
+Speedup: 1.19x
+Throughput: 1.84 MB/s
+
+Hardware result:
+19 22 
+43 50 
+
+Software result:
+19 22 
+43 50 
+
+--- Done ---
+
+--- Batched DMA Transfer: 10 matrix pairs in ONE transaction ---
+RX transfer timed out -- same likely cause as above.
+
+--- Batched DMA Transfer: 10 matrix pairs in ONE transaction ---
+Pair 0: RX transfer timed out
