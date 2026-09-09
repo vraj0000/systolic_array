@@ -1,12 +1,70 @@
-# Systolic Array Accelerator on Basys 3
+# Systolic Array
 
-A 16x16 systolic array that does matrix multiplication on a Basys 3 FPGA. You send matrices from a PC over UART, it multiplies them, and sends the result back. The compute core runs at 120 MHz and the UART side runs at 96 MHz with a handshake to cross the clock boundary safely.
+The project started as a basic systolic array connected to a custom UART at 12 MBaud on the Basys 3, to get data into the FPGA as fast as possible. In this phase, two matrices are sent row wise over UART in the 96 MHz domain and crossed into the 120 MHz domain with a 2 stage sync flip flop handshake. ILA waveform below.
+
+Later, to extend this and learn AXI, I wrapped the UART module (built on an async FIFO) into an AXI-Stream interface and sent data through MicroBlaze V to a DMA stream back to the PC. After getting that working, I wrapped the systolic array itself with AXI-Stream input and output, connecting it to the DMA as a streaming accelerator. This gives a small fixed function hardware block connected to the DMA stream, where the CPU sends data by writing to memory and triggering the DMA, then reads the result back from the same BRAM.
+
+The main motivation was to pair a systolic array with a CPU core. The CPU can arrange data in BRAM as needed, and either a DMA trigger or an AXI config register can kick off the systolic compute for larger matmuls.
+
+This architecture can extend to other fixed function accelerators like FIR, FFT, and others. Right now it is streaming based, but it could also be made instruction based.
 
 Throughput is 1.2 MBPS using the ftd2xx library at 12 MBaud with 8x oversampling, clocked by a PLL at 96 MHz.
 
+With AXI-Stream on a 2x2 matrix, the array moves 32 bits every cycle at 100 MHz, completing the full result stream in 12 cycles, with a 5 cycle gap in between for the systolic compute itself. Compared to software matmul on MicroBlaze, software compute time increases with operand size while the systolic timing stays fixed.
+
 ---
 
-## How It Works
+## AXI4-Stream / MicroBlaze V SoC Integration
+
+Extended the same 2x2 systolic array into a full SoC: MicroBlaze V, AXI DMA, and AXI4-Stream, instead of driving it directly over UART.
+
+![Block Design](axi_stream_microblaze_systolic/img/block.bmp)
+
+A bare-metal C driver arms the DMA in Simple mode, sends a packed matrix pair in, and polls for the result.
+
+### Key Numbers
+
+| Parameter | Value |
+|---|---|
+| Test configuration | 2x2 matrix |
+| Fixed array compute latency | 12 cycles @ 100 MHz = 120 ns |
+| DMA setup overhead (avg) | 5.78 us |
+| Transfer + poll wait (avg) | 2.49 us |
+| Total hardware round trip (avg) | 8.27 us |
+| Speedup vs. software matmul | 1.19x to 1.76x, grows with operand magnitude |
+
+### What I Found
+
+**Array latency is fixed, software isn't.** The array takes exactly 12 cycles per matmul regardless of input values, confirmed by matching cycle count between Verilator sim and hardware ILA capture. MicroBlaze's software baseline uses a soft multiplier that takes more cycles for larger operands, so speedup over software grows with operand size (1.19x to 1.76x) even though the hardware never changes speed.
+
+![Verilator Simulation](axi_stream_microblaze_systolic/img/verilator.bmp)
+
+Top signals are the clocks. Red signals are AXI-Stream input, yellow is AXI-Stream output, green is internal data movement, blue below that is the systolic state transition. This matches the ILA capture from the Basys 3.
+
+**DMA setup dominates at this payload size.** About 70% of the 8.27 us round trip is register setup, not data movement or compute. AXI4-Stream itself can move roughly 100 MB/s at this width and clock, but a 2x2 matmul only moves 16 bytes total, so fixed DMA setup cost swamps the actual transfer.
+
+**16-bit accumulator overflow is verified, not a bug.** The output accumulator is 16 bits wide, so results wrap at 65536. Confirmed hardware and software wrap identically across the full 8-bit input range, including the exact overflow boundary (181 stays under the limit, 182 wraps).
+
+**Batching doesn't work with the current wrapper.** The AXI-Stream wrapper asserts TLAST at the end of every pair, not just the last pair of a batch. DMA Simple mode treats one TLAST as the whole transfer being done, so a batched request only completes on the first pair. Fixing this needs the wrapper to only assert TLAST on the final pair and auto restart the FSM between pairs.
+
+### Verification
+
+Verified on hardware using Vivado ILA, capturing real AXI-Stream transactions between the DMA and the array.
+
+![ILA Capture](axi_stream_microblaze_systolic/img/ila.bmp)
+
+- TDATA on the ILA capture matches expected packed input/output values
+- Hardware output matches software output exactly across small, mid range, and near max 8-bit values, including overflow wraparound
+- Repeatable across 100 and 1000 run counts
+
+### Notes
+
+- Only the 2x2 configuration was tested through this DMA path. The array itself scales to 16x16 (see UART-based results below), but that hasn't been re-verified through DMA yet
+- The 2x2 version was used for early bringup and is still in the repo, it is simpler to debug on the ILA but the desing is fully scaleable.
+
+---
+
+## Original Systolic and UART design
 
 The design splits into two clock domains:
 - **96 MHz domain** handles UART RX/TX and unpacking the incoming byte stream
@@ -40,7 +98,6 @@ top
       └── two_stage_sync
 ```
 
-
 ## Key Numbers
 
 | Parameter | Value |
@@ -55,7 +112,6 @@ top
 
 Timing started at WNS = -0.261 ns and closed at +0.149 ns. The main fix was setting `max_fanout = 64` on `rx_ready`, which was fanning out to 4097 endpoints and blowing the timing budget on those paths. Adding that line made a tree structure for Write enable singal.
 
-
 ## Verification
 
 The design was verified on hardware using Vivado ILA. Captures confirm:
@@ -68,25 +124,6 @@ The design was verified on hardware using Vivado ILA. Captures confirm:
 
 ---
 
-## What I Learned
- 
-**Timing closure on real hardware:** started at WNS = -0.261 ns and closed at +0.149 ns for the 16x16 systolic array.
- 
-**Fanout is a real timing killer:** `rx_ready` was fanning out to 4097 endpoints. The fix was setting `max_fanout = 64` which told Vivado to replicate the register and build a signal tree to distribute the load. Slack on those paths dropped from ~6.5 ns to ~4.8 ns after that one change.
- 
-**Logic and path delay balance matters:** the give design sits close to 50/50 between logic delay and net delay on the critical path. Too much net delay means placement is poor. Too much logic delay means the combinational path is too deep and needs pipelining. The 16x16 came in balanced which was a good sign the systolic structure was placed and routed efficiently and the banch is matined throight out the scale form 2x2 to 16x16.
- 
-**Critical path analysis and pipeline insertion:** used `report_timing` to trace the failing path, identified the PE MAC as the bottleneck, and inserted input and output pipeline stages to break the long combinational path. Where you cut matters too, splitting at the multiplier boundary gave better slack than splitting at the adder output.
- 
-**Making the compute the dominant clock:** pushing the systolic array to 120 MHz while keeping UART at 96 MHz keeps the bottleneck in the compute domain where it belongs.
- 
-**Verify in simulation before touching the FPGA:** debugging on hardware with ILA is slow. Every iteration means synthesis, implementation, bitstream generation, and programming. If you use ILA to debug the logic itself rather than integration you waste hours per bug. The right approach is to verify the model works correctly in simulation first (Verilator works well for this), then move to hardware knowing the only bugs left are integration level ones.
- 
-**LLMs are useful but not enough on their own:** AI tools can generate RTL modules quickly but they do not account for fanout, logic depth, or timing closure. The designer still has to understand the architecture, plan the pipeline stages, and connect the modules correctly. A good workflow is to use LLMs to generate individual modules and then wire them up yourself with the timing and hierarchy in mind.
- 
-
----
-
 ## Repo Layout
 
 ```
@@ -94,9 +131,5 @@ src/           RTL source files (Verilog + VHDL)
 systolic/      Constraints and Vivado project files
 images/        ILA captures and timing screenshots
 host/          PC-side UART program (C + ftd2xx)
+axi_stream_microblaze_systolic/img/    Block design, ILA, and Verilator captures for the SoC integration
 ```
-
----
-
-## Notes
-- The 2x2 version was used for early bringup and is still in the repo, it is simpler to debug on the ILA but the desing is fully scaleable.
