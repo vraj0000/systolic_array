@@ -1,0 +1,59 @@
+module pe #(
+    parameter bit_width = 8
+) (
+    input clk, rst,
+    input [bit_width-1 : 0] in_a,
+    input [bit_width-1 : 0] in_b,
+
+    input [(bit_width*2)-1 : 0] drain_data_0,   // from acc_0 chain above
+    input [(bit_width*2)-1 : 0] drain_data_1,   // from acc_1 chain above
+
+    input drain_0, drain_1,
+    input switch,
+
+    output [bit_width-1 : 0] out_a,
+    output [bit_width-1 : 0] out_b,
+    output [(bit_width*2)-1 : 0] out_acc_0,      // acc_0 chain, passed below
+    output [(bit_width*2)-1 : 0] out_acc_1       // acc_1 chain, passed below
+);
+
+    reg [bit_width-1 : 0] r_out_a;
+    reg [bit_width-1 : 0] r_out_b;
+
+    wire [(bit_width*2)-1 : 0] acc_c;
+    wire [(bit_width*2)-1 : 0] pe_sum;
+    wire [(bit_width*2)-1 : 0] multi;
+
+    reg [(bit_width*2)-1 : 0] acc_0;
+    reg [(bit_width*2)-1 : 0] acc_1;
+
+    assign out_a     = r_out_a;
+    assign out_b     = r_out_b;
+    assign out_acc_0 = acc_0;
+    assign out_acc_1 = acc_1;
+
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            r_out_a <= 0;
+            r_out_b <= 0;
+            acc_0   <= 0;
+            acc_1   <= 0;
+        end else begin
+            r_out_a <= in_a;
+            r_out_b <= in_b;
+
+            if (switch) begin
+                acc_0 <= pe_sum;                                 // bank 0 fills
+                acc_1 <= drain_1 ? drain_data_1 : acc_1;           // bank 1 drains (or holds)
+            end else begin
+                acc_1 <= pe_sum;                                 // bank 1 fills
+                acc_0 <= drain_0 ? drain_data_0 : acc_0;           // bank 0 drains (or holds)
+            end
+        end
+    end
+
+    assign pe_sum = acc_c + multi;
+    assign acc_c  = switch ? acc_0 : acc_1;
+    assign multi  = in_a * in_b;
+
+endmodule

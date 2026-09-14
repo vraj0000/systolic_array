@@ -1,0 +1,83 @@
+Reading timing models for corner nom_tt_025C_1v80…
+Reading timing library for the 'nom_tt_025C_1v80' corner at '/home/vraj/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib'…
+Reading timing models for corner nom_ff_n40C_1v95…
+Reading timing library for the 'nom_ff_n40C_1v95' corner at '/home/vraj/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib'…
+Reading timing models for corner nom_ss_100C_1v60…
+Reading timing library for the 'nom_ss_100C_1v60' corner at '/home/vraj/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib'…
+Reading OpenROAD database at '/home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/27-openroad-globalplacement/control_systolic.odb'…
+Reading design constraints file at '/nix/store/41c5n1rfapbw2k2daig2yag6mbsifckg-python3-3.11.9-env/lib/python3.11/site-packages/librelane/scripts/base.sdc'…
+[INFO] Using clock clk…
+[INFO] Setting output delay to: 2
+[INFO] Setting input delay to: 2
+[INFO] Setting load to: 0.033442
+[INFO] Setting clock uncertainty to: 0.25
+[INFO] Setting clock transition to: 0.1499999999999999944488848768742172978818416595458984375
+[INFO] Setting timing derate to: 5%
+[INFO] Setting RC values…
+[INFO RSZ-0027] Inserted 38 input buffers.
+[INFO RSZ-0028] Inserted 34 output buffers.
+[INFO RSZ-0058] Using max wire length 6335um.
+Iteration | Resized | Buffers | Nets repaired | Remaining
+---------------------------------------------------------
+        0 |       0 |       0 |             0 |      2501
+      100 |      94 |       0 |             0 |      2401
+      200 |     186 |       0 |             0 |      2301
+      300 |     281 |       0 |             0 |      2201
+      400 |     373 |       0 |             0 |      2101
+      500 |     469 |       0 |             0 |      2001
+      600 |     561 |       0 |             0 |      1901
+      700 |     655 |       0 |             0 |      1801
+      800 |     750 |       1 |             1 |      1701
+      900 |     841 |       1 |             1 |      1601
+     1000 |     938 |       1 |             1 |      1501
+     1100 |    1034 |       1 |             1 |      1401
+     1200 |    1130 |       1 |             1 |      1301
+     1300 |    1230 |       3 |             3 |      1201
+     1400 |    1329 |       6 |             5 |      1101
+     1500 |    1403 |       8 |             6 |      1001
+     1600 |    1479 |      11 |             9 |       901
+     1700 |    1554 |      11 |            10 |       801
+     1800 |    1626 |      17 |            13 |       701
+     1900 |    1755 |      79 |            35 |       601
+     2000 |    1886 |     118 |            58 |       501
+     2100 |    1999 |     133 |            66 |       401
+     2200 |    2027 |     139 |           146 |       301
+     2300 |    2027 |     139 |           246 |       201
+     2400 |    2060 |     139 |           312 |       101
+     2500 |    2176 |     203 |           330 |         1
+    final |    2176 |     203 |           330 |         0
+---------------------------------------------------------
+[INFO RSZ-0034] Found 248 slew violations.
+[INFO RSZ-0035] Found 82 fanout violations.
+[INFO RSZ-0038] Inserted 203 buffers in 330 nets.
+[INFO RSZ-0039] Resized 2176 instances.
+Placement Analysis
+---------------------------------
+total displacement       6876.6 u
+average displacement        1.8 u
+max displacement           10.3 u
+original HPWL           51289.2 u
+legalized HPWL          57709.2 u
+delta HPWL                   13 %
+
+[INFO DPL-0020] Mirrored 1112 instances
+[INFO DPL-0021] HPWL before           57709.2 u
+[INFO DPL-0022] HPWL after            56080.4 u
+[INFO DPL-0023] HPWL delta               -2.8 %
+[INFO] Setting RC values…
+Setting global connections for newly added cells…
+[INFO] Setting global connections...
+Updating metrics…
+Cell type report:                       Count       Area
+  Fill cell                               188     705.68
+  Tap cell                                912    1141.09
+  Timing Repair Buffer                    275    1521.46
+  Inverter                                268    1005.96
+  Sequential cell                         257    6396.13
+  Multi-Input combinational cell         1865   13893.32
+  Total                                  3765   24663.65
+Writing OpenROAD database to '/home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/31-openroad-repairdesignpostgpl/control_systolic.odb'…
+Writing netlist to '/home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/31-openroad-repairdesignpostgpl/control_systolic.nl.v'…
+Writing powered netlist to '/home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/31-openroad-repairdesignpostgpl/control_systolic.pnl.v'…
+Writing layout to '/home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/31-openroad-repairdesignpostgpl/control_systolic.def'…
+Writing timing constraints to '/home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/31-openroad-repairdesignpostgpl/control_systolic.sdc'…

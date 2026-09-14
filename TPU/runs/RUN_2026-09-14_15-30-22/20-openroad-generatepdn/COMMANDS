@@ -1,0 +1,1 @@
+openroad -exit -no_splash -metrics /home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/20-openroad-generatepdn/or_metrics_out.json /nix/store/41c5n1rfapbw2k2daig2yag6mbsifckg-python3-3.11.9-env/lib/python3.11/site-packages/librelane/scripts/openroad/pdn.tcl

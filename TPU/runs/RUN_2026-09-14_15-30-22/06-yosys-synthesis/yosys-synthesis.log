@@ -1,0 +1,1508 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2024  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)
+Loaded SDC plugin
+
+1. Executing Liberty frontend: /home/vraj/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Imported 428 cell types from liberty file.
+[INFO] Using SDC file '/home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/06-yosys-synthesis/synthesis.abc.sdc' for ABC…
+
+2. Executing Verilog-2005 frontend: /home/vraj/Hardware/TPU/src/control_systolic.v
+Parsing SystemVerilog input from `/home/vraj/Hardware/TPU/src/control_systolic.v' to AST representation.
+Storing AST representation for module `$abstract\control_systolic'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: /home/vraj/Hardware/TPU/src/systolic.v
+Parsing SystemVerilog input from `/home/vraj/Hardware/TPU/src/systolic.v' to AST representation.
+Storing AST representation for module `$abstract\systolic'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: /home/vraj/Hardware/TPU/src/pe.v
+Parsing SystemVerilog input from `/home/vraj/Hardware/TPU/src/pe.v' to AST representation.
+Storing AST representation for module `$abstract\pe'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: /home/vraj/Hardware/TPU/src/dff.v
+Parsing SystemVerilog input from `/home/vraj/Hardware/TPU/src/dff.v' to AST representation.
+Storing AST representation for module `$abstract\dff'.
+Successfully finished Verilog frontend.
+
+6. Executing HIERARCHY pass (managing design hierarchy).
+
+7. Executing AST frontend in derive mode using pre-parsed AST for module `\control_systolic'.
+Generating RTLIL representation for module `\control_systolic'.
+
+7.1. Analyzing design hierarchy..
+Top module:  \control_systolic
+Parameter \systolic_size = 2
+Parameter \bit_width = 8
+
+7.2. Executing AST frontend in derive mode using pre-parsed AST for module `\systolic'.
+Parameter \systolic_size = 2
+Parameter \bit_width = 8
+Generating RTLIL representation for module `$paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic'.
+
+7.3. Analyzing design hierarchy..
+Top module:  \control_systolic
+Used module:     $paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic
+Parameter \bit_width = 16
+
+7.4. Executing AST frontend in derive mode using pre-parsed AST for module `\dff'.
+Parameter \bit_width = 16
+Generating RTLIL representation for module `$paramod\dff\bit_width=s32'00000000000000000000000000010000'.
+Parameter \bit_width = 16
+Found cached RTLIL representation for module `$paramod\dff\bit_width=s32'00000000000000000000000000010000'.
+Parameter \bit_width = 8
+
+7.5. Executing AST frontend in derive mode using pre-parsed AST for module `\pe'.
+Parameter \bit_width = 8
+Generating RTLIL representation for module `$paramod\pe\bit_width=s32'00000000000000000000000000001000'.
+Parameter \bit_width = 8
+Found cached RTLIL representation for module `$paramod\pe\bit_width=s32'00000000000000000000000000001000'.
+Parameter \bit_width = 8
+Found cached RTLIL representation for module `$paramod\pe\bit_width=s32'00000000000000000000000000001000'.
+Parameter \bit_width = 8
+Found cached RTLIL representation for module `$paramod\pe\bit_width=s32'00000000000000000000000000001000'.
+Parameter \bit_width = 1
+
+7.6. Executing AST frontend in derive mode using pre-parsed AST for module `\dff'.
+Parameter \bit_width = 1
+Generating RTLIL representation for module `$paramod\dff\bit_width=s32'00000000000000000000000000000001'.
+Parameter \bit_width = 1
+Found cached RTLIL representation for module `$paramod\dff\bit_width=s32'00000000000000000000000000000001'.
+Parameter \bit_width = 1
+Found cached RTLIL representation for module `$paramod\dff\bit_width=s32'00000000000000000000000000000001'.
+Parameter \bit_width = 1
+Found cached RTLIL representation for module `$paramod\dff\bit_width=s32'00000000000000000000000000000001'.
+Parameter \bit_width = 8
+
+7.7. Executing AST frontend in derive mode using pre-parsed AST for module `\dff'.
+Parameter \bit_width = 8
+Generating RTLIL representation for module `$paramod\dff\bit_width=s32'00000000000000000000000000001000'.
+Parameter \bit_width = 8
+Found cached RTLIL representation for module `$paramod\dff\bit_width=s32'00000000000000000000000000001000'.
+
+7.8. Analyzing design hierarchy..
+Top module:  \control_systolic
+Used module:     $paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic
+Used module:         $paramod\dff\bit_width=s32'00000000000000000000000000010000
+Used module:         $paramod\pe\bit_width=s32'00000000000000000000000000001000
+Used module:         $paramod\dff\bit_width=s32'00000000000000000000000000000001
+Used module:         $paramod\dff\bit_width=s32'00000000000000000000000000001000
+
+7.9. Analyzing design hierarchy..
+Top module:  \control_systolic
+Used module:     $paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic
+Used module:         $paramod\dff\bit_width=s32'00000000000000000000000000010000
+Used module:         $paramod\pe\bit_width=s32'00000000000000000000000000001000
+Used module:         $paramod\dff\bit_width=s32'00000000000000000000000000000001
+Used module:         $paramod\dff\bit_width=s32'00000000000000000000000000001000
+Removing unused module `$abstract\dff'.
+Removing unused module `$abstract\pe'.
+Removing unused module `$abstract\systolic'.
+Removing unused module `$abstract\control_systolic'.
+Removed 4 unused modules.
+Renaming module control_systolic to control_systolic.
+
+8. Generating Graphviz representation of design.
+Writing dot description to `/home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/06-yosys-synthesis/hierarchy.dot'.
+Dumping module control_systolic to page 1.
+
+9. Executing TRIBUF pass.
+
+10. Executing HIERARCHY pass (managing design hierarchy).
+
+10.1. Analyzing design hierarchy..
+Top module:  \control_systolic
+Used module:     $paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic
+Used module:         $paramod\dff\bit_width=s32'00000000000000000000000000010000
+Used module:         $paramod\pe\bit_width=s32'00000000000000000000000000001000
+Used module:         $paramod\dff\bit_width=s32'00000000000000000000000000000001
+Used module:         $paramod\dff\bit_width=s32'00000000000000000000000000001000
+
+10.2. Analyzing design hierarchy..
+Top module:  \control_systolic
+Used module:     $paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic
+Used module:         $paramod\dff\bit_width=s32'00000000000000000000000000010000
+Used module:         $paramod\pe\bit_width=s32'00000000000000000000000000001000
+Used module:         $paramod\dff\bit_width=s32'00000000000000000000000000000001
+Used module:         $paramod\dff\bit_width=s32'00000000000000000000000000001000
+Removed 0 unused modules.
+
+11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+12. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$/home/vraj/Hardware/TPU/src/control_systolic.v:84$12 in module control_systolic.
+Marked 3 switch rules as full_case in process $proc$/home/vraj/Hardware/TPU/src/control_systolic.v:59$8 in module control_systolic.
+Marked 2 switch rules as full_case in process $proc$/home/vraj/Hardware/TPU/src/control_systolic.v:35$1 in module control_systolic.
+Marked 1 switch rules as full_case in process $proc$/home/vraj/Hardware/TPU/src/systolic.v:238$17 in module $paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic.
+Marked 1 switch rules as full_case in process $proc$/home/vraj/Hardware/TPU/src/dff.v:14$28 in module $paramod\dff\bit_width=s32'00000000000000000000000000001000.
+Marked 1 switch rules as full_case in process $proc$/home/vraj/Hardware/TPU/src/dff.v:14$27 in module $paramod\dff\bit_width=s32'00000000000000000000000000000001.
+Marked 2 switch rules as full_case in process $proc$/home/vraj/Hardware/TPU/src/pe.v:38$21 in module $paramod\pe\bit_width=s32'00000000000000000000000000001000.
+Marked 1 switch rules as full_case in process $proc$/home/vraj/Hardware/TPU/src/dff.v:14$20 in module $paramod\dff\bit_width=s32'00000000000000000000000000010000.
+Removed a total of 0 dead cases.
+
+13. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 14 redundant assignments.
+Promoted 0 assignments to connections.
+
+14. Executing PROC_INIT pass (extract init attributes).
+
+15. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst in `$paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic.$proc$/home/vraj/Hardware/TPU/src/systolic.v:238$17'.
+Found async reset \rst in `$paramod\dff\bit_width=s32'00000000000000000000000000001000.$proc$/home/vraj/Hardware/TPU/src/dff.v:14$28'.
+Found async reset \rst in `$paramod\dff\bit_width=s32'00000000000000000000000000000001.$proc$/home/vraj/Hardware/TPU/src/dff.v:14$27'.
+Found async reset \rst in `$paramod\pe\bit_width=s32'00000000000000000000000000001000.$proc$/home/vraj/Hardware/TPU/src/pe.v:38$21'.
+Found async reset \rst in `$paramod\dff\bit_width=s32'00000000000000000000000000010000.$proc$/home/vraj/Hardware/TPU/src/dff.v:14$20'.
+
+16. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~9 debug messages>
+
+17. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:84$12'.
+     1/5: $0\drain_even[0:0]
+     2/5: $0\drain_odd_d1[0:0]
+     3/5: $0\drain_odd[0:0]
+     4/5: $0\switch[0:0]
+     5/5: $0\switch_r1[0:0]
+Creating decoders for process `\control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:59$8'.
+     1/2: $0\row_count[2:0]
+     2/2: $0\matrix_count[2:0]
+Creating decoders for process `\control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:35$1'.
+     1/1: $0\busy_r[0:0]
+Creating decoders for process `$paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic.$proc$/home/vraj/Hardware/TPU/src/systolic.v:238$17'.
+     1/3: $0\out_c_valid_r[0:0]
+     2/3: $0\out_c_r1[15:0]
+     3/3: $0\out_c_r0[15:0]
+Creating decoders for process `$paramod\dff\bit_width=s32'00000000000000000000000000001000.$proc$/home/vraj/Hardware/TPU/src/dff.v:14$28'.
+     1/1: $0\r_q[7:0]
+Creating decoders for process `$paramod\dff\bit_width=s32'00000000000000000000000000000001.$proc$/home/vraj/Hardware/TPU/src/dff.v:14$27'.
+     1/1: $0\r_q[0:0]
+Creating decoders for process `$paramod\pe\bit_width=s32'00000000000000000000000000001000.$proc$/home/vraj/Hardware/TPU/src/pe.v:38$21'.
+     1/4: $0\acc_1[15:0]
+     2/4: $0\acc_0[15:0]
+     3/4: $0\r_out_b[7:0]
+     4/4: $0\r_out_a[7:0]
+Creating decoders for process `$paramod\dff\bit_width=s32'00000000000000000000000000010000.$proc$/home/vraj/Hardware/TPU/src/dff.v:14$20'.
+     1/1: $0\r_q[15:0]
+
+18. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+19. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\control_systolic.\switch' using process `\control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:84$12'.
+  created $dff cell `$procdff$80' with positive edge clock.
+Creating register for signal `\control_systolic.\switch_r1' using process `\control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:84$12'.
+  created $dff cell `$procdff$81' with positive edge clock.
+Creating register for signal `\control_systolic.\drain_odd' using process `\control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:84$12'.
+  created $dff cell `$procdff$82' with positive edge clock.
+Creating register for signal `\control_systolic.\drain_odd_d1' using process `\control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:84$12'.
+  created $dff cell `$procdff$83' with positive edge clock.
+Creating register for signal `\control_systolic.\drain_even' using process `\control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:84$12'.
+  created $dff cell `$procdff$84' with positive edge clock.
+Creating register for signal `\control_systolic.\row_count' using process `\control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:59$8'.
+  created $dff cell `$procdff$85' with positive edge clock.
+Creating register for signal `\control_systolic.\matrix_count' using process `\control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:59$8'.
+  created $dff cell `$procdff$86' with positive edge clock.
+Creating register for signal `\control_systolic.\busy_r' using process `\control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:35$1'.
+  created $dff cell `$procdff$87' with positive edge clock.
+Creating register for signal `$paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic.\out_c_r0' using process `$paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic.$proc$/home/vraj/Hardware/TPU/src/systolic.v:238$17'.
+  created $adff cell `$procdff$90' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic.\out_c_r1' using process `$paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic.$proc$/home/vraj/Hardware/TPU/src/systolic.v:238$17'.
+  created $adff cell `$procdff$93' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic.\out_c_valid_r' using process `$paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic.$proc$/home/vraj/Hardware/TPU/src/systolic.v:238$17'.
+  created $adff cell `$procdff$96' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\dff\bit_width=s32'00000000000000000000000000001000.\r_q' using process `$paramod\dff\bit_width=s32'00000000000000000000000000001000.$proc$/home/vraj/Hardware/TPU/src/dff.v:14$28'.
+  created $adff cell `$procdff$99' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\dff\bit_width=s32'00000000000000000000000000000001.\r_q' using process `$paramod\dff\bit_width=s32'00000000000000000000000000000001.$proc$/home/vraj/Hardware/TPU/src/dff.v:14$27'.
+  created $adff cell `$procdff$102' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\pe\bit_width=s32'00000000000000000000000000001000.\r_out_a' using process `$paramod\pe\bit_width=s32'00000000000000000000000000001000.$proc$/home/vraj/Hardware/TPU/src/pe.v:38$21'.
+  created $adff cell `$procdff$105' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\pe\bit_width=s32'00000000000000000000000000001000.\r_out_b' using process `$paramod\pe\bit_width=s32'00000000000000000000000000001000.$proc$/home/vraj/Hardware/TPU/src/pe.v:38$21'.
+  created $adff cell `$procdff$108' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\pe\bit_width=s32'00000000000000000000000000001000.\acc_0' using process `$paramod\pe\bit_width=s32'00000000000000000000000000001000.$proc$/home/vraj/Hardware/TPU/src/pe.v:38$21'.
+  created $adff cell `$procdff$111' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\pe\bit_width=s32'00000000000000000000000000001000.\acc_1' using process `$paramod\pe\bit_width=s32'00000000000000000000000000001000.$proc$/home/vraj/Hardware/TPU/src/pe.v:38$21'.
+  created $adff cell `$procdff$114' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\dff\bit_width=s32'00000000000000000000000000010000.\r_q' using process `$paramod\dff\bit_width=s32'00000000000000000000000000010000.$proc$/home/vraj/Hardware/TPU/src/dff.v:14$20'.
+  created $adff cell `$procdff$117' with positive edge clock and positive level reset.
+
+20. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+21. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `\control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:84$12'.
+Removing empty process `control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:84$12'.
+Found and cleaned up 3 empty switches in `\control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:59$8'.
+Removing empty process `control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:59$8'.
+Found and cleaned up 3 empty switches in `\control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:35$1'.
+Removing empty process `control_systolic.$proc$/home/vraj/Hardware/TPU/src/control_systolic.v:35$1'.
+Found and cleaned up 1 empty switch in `$paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic.$proc$/home/vraj/Hardware/TPU/src/systolic.v:238$17'.
+Removing empty process `$paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic.$proc$/home/vraj/Hardware/TPU/src/systolic.v:238$17'.
+Removing empty process `$paramod\dff\bit_width=s32'00000000000000000000000000001000.$proc$/home/vraj/Hardware/TPU/src/dff.v:14$28'.
+Removing empty process `$paramod\dff\bit_width=s32'00000000000000000000000000000001.$proc$/home/vraj/Hardware/TPU/src/dff.v:14$27'.
+Found and cleaned up 1 empty switch in `$paramod\pe\bit_width=s32'00000000000000000000000000001000.$proc$/home/vraj/Hardware/TPU/src/pe.v:38$21'.
+Removing empty process `$paramod\pe\bit_width=s32'00000000000000000000000000001000.$proc$/home/vraj/Hardware/TPU/src/pe.v:38$21'.
+Removing empty process `$paramod\dff\bit_width=s32'00000000000000000000000000010000.$proc$/home/vraj/Hardware/TPU/src/dff.v:14$20'.
+Cleaned up 9 empty switches.
+
+22. Executing CHECK pass (checking for obvious problems).
+Checking module control_systolic...
+Checking module $paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic...
+Checking module $paramod\dff\bit_width=s32'00000000000000000000000000001000...
+Checking module $paramod\dff\bit_width=s32'00000000000000000000000000000001...
+Checking module $paramod\pe\bit_width=s32'00000000000000000000000000001000...
+Checking module $paramod\dff\bit_width=s32'00000000000000000000000000010000...
+Found and reported 0 problems.
+
+23. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+Optimizing module $paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic.
+<suppressed ~3 debug messages>
+Optimizing module $paramod\dff\bit_width=s32'00000000000000000000000000001000.
+<suppressed ~1 debug messages>
+Optimizing module $paramod\dff\bit_width=s32'00000000000000000000000000000001.
+<suppressed ~1 debug messages>
+Optimizing module $paramod\pe\bit_width=s32'00000000000000000000000000001000.
+<suppressed ~4 debug messages>
+Optimizing module $paramod\dff\bit_width=s32'00000000000000000000000000010000.
+<suppressed ~1 debug messages>
+
+24. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod$551c454495e532204446c6e0575ac2ab5b77bd66\systolic.
+Deleting now unused module $paramod\dff\bit_width=s32'00000000000000000000000000001000.
+Deleting now unused module $paramod\dff\bit_width=s32'00000000000000000000000000000001.
+Deleting now unused module $paramod\pe\bit_width=s32'00000000000000000000000000001000.
+Deleting now unused module $paramod\dff\bit_width=s32'00000000000000000000000000010000.
+<suppressed ~13 debug messages>
+
+25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+
+26. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+Removed 4 unused cells and 103 unused wires.
+<suppressed ~7 debug messages>
+
+27. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+
+28. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+29. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \control_systolic..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+30. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \control_systolic.
+Performed a total of 0 changes.
+
+31. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+Removed a total of 0 cells.
+
+32. Executing OPT_DFF pass (perform DFF optimizations).
+
+33. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+Removed 0 unused cells and 13 unused wires.
+<suppressed ~13 debug messages>
+
+34. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+
+35. Rerunning OPT passes. (Maybe there is more to do…)
+
+36. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \control_systolic..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+37. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \control_systolic.
+Performed a total of 0 changes.
+
+38. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+Removed a total of 0 cells.
+
+39. Executing OPT_DFF pass (perform DFF optimizations).
+
+40. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+
+41. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+
+42. Executing FSM pass (extract and optimize FSM).
+
+42.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+42.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+42.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+42.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+
+42.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+42.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+42.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+42.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+43. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+
+44. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+Removed a total of 0 cells.
+
+45. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \control_systolic..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~22 debug messages>
+
+46. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \control_systolic.
+Performed a total of 0 changes.
+
+47. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+Removed a total of 0 cells.
+
+48. Executing OPT_DFF pass (perform DFF optimizations).
+Adding SRST signal on $procdff$87 ($dff) from module control_systolic (D = $procmux$65_Y, Q = \busy_r, rval = 1'0).
+Adding EN signal on $auto$ff.cc:266:slice$131 ($sdff) from module control_systolic (D = $procmux$65_Y, Q = \busy_r).
+Adding SRST signal on $procdff$86 ($dff) from module control_systolic (D = $procmux$55_Y, Q = \matrix_count, rval = 3'000).
+Adding EN signal on $auto$ff.cc:266:slice$135 ($sdff) from module control_systolic (D = $add$/home/vraj/Hardware/TPU/src/control_systolic.v:66$10_Y [2:0], Q = \matrix_count).
+Adding SRST signal on $procdff$85 ($dff) from module control_systolic (D = $add$/home/vraj/Hardware/TPU/src/control_systolic.v:68$11_Y [2:0], Q = \row_count, rval = 3'000).
+Adding SRST signal on $procdff$84 ($dff) from module control_systolic (D = \drain_odd_d1, Q = \drain_even, rval = 1'0).
+Adding SRST signal on $procdff$83 ($dff) from module control_systolic (D = \drain_odd, Q = \drain_odd_d1, rval = 1'0).
+Adding SRST signal on $procdff$82 ($dff) from module control_systolic (D = \switch_r1, Q = \drain_odd, rval = 1'0).
+Adding SRST signal on $procdff$81 ($dff) from module control_systolic (D = \switch, Q = \switch_r1, rval = 1'0).
+Adding SRST signal on $procdff$80 ($dff) from module control_systolic (D = $logic_not$/home/vraj/Hardware/TPU/src/control_systolic.v:93$15_Y, Q = \switch, rval = 1'0).
+Adding EN signal on $flatten\systolic_unit_0.\U_11.$procdff$114 ($adff) from module control_systolic (D = $flatten\systolic_unit_0.\U_11.$0\acc_1[15:0], Q = \systolic_unit_0.U_11.acc_1).
+Adding EN signal on $flatten\systolic_unit_0.\U_11.$procdff$111 ($adff) from module control_systolic (D = $flatten\systolic_unit_0.\U_11.$0\acc_0[15:0], Q = \systolic_unit_0.U_11.acc_0).
+Adding EN signal on $flatten\systolic_unit_0.\U_10.$procdff$114 ($adff) from module control_systolic (D = $flatten\systolic_unit_0.\U_10.$0\acc_1[15:0], Q = \systolic_unit_0.U_10.acc_1).
+Adding EN signal on $flatten\systolic_unit_0.\U_10.$procdff$111 ($adff) from module control_systolic (D = $flatten\systolic_unit_0.\U_10.$0\acc_0[15:0], Q = \systolic_unit_0.U_10.acc_0).
+Adding EN signal on $flatten\systolic_unit_0.\U_01.$procdff$114 ($adff) from module control_systolic (D = $flatten\systolic_unit_0.\U_01.$0\acc_1[15:0], Q = \systolic_unit_0.U_01.acc_1).
+Adding EN signal on $flatten\systolic_unit_0.\U_01.$procdff$111 ($adff) from module control_systolic (D = $flatten\systolic_unit_0.\U_01.$0\acc_0[15:0], Q = \systolic_unit_0.U_01.acc_0).
+Adding EN signal on $flatten\systolic_unit_0.\U_00.$procdff$114 ($adff) from module control_systolic (D = $flatten\systolic_unit_0.\U_00.$0\acc_1[15:0], Q = \systolic_unit_0.U_00.acc_1).
+Adding EN signal on $flatten\systolic_unit_0.\U_00.$procdff$111 ($adff) from module control_systolic (D = $flatten\systolic_unit_0.\U_00.$0\acc_0[15:0], Q = \systolic_unit_0.U_00.acc_0).
+Adding EN signal on $flatten\systolic_unit_0.$procdff$93 ($adff) from module control_systolic (D = $flatten\systolic_unit_0.$ternary$/home/vraj/Hardware/TPU/src/systolic.v:249$19_Y, Q = \systolic_unit_0.out_c_r1).
+Adding EN signal on $flatten\systolic_unit_0.$procdff$90 ($adff) from module control_systolic (D = $flatten\systolic_unit_0.$ternary$/home/vraj/Hardware/TPU/src/systolic.v:248$18_Y, Q = \systolic_unit_0.out_c_r0).
+
+49. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+Removed 14 unused cells and 14 unused wires.
+<suppressed ~15 debug messages>
+
+50. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+<suppressed ~5 debug messages>
+
+51. Rerunning OPT passes. (Maybe there is more to do…)
+
+52. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \control_systolic..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~15 debug messages>
+
+53. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \control_systolic.
+Performed a total of 0 changes.
+
+54. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+55. Executing OPT_DFF pass (perform DFF optimizations).
+
+56. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+Removed 0 unused cells and 1 unused wires.
+<suppressed ~1 debug messages>
+
+57. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+
+58. Rerunning OPT passes. (Maybe there is more to do…)
+
+59. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \control_systolic..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~15 debug messages>
+
+60. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \control_systolic.
+Performed a total of 0 changes.
+
+61. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+Removed a total of 0 cells.
+
+62. Executing OPT_DFF pass (perform DFF optimizations).
+
+63. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+
+64. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+
+65. Executing WREDUCE pass (reducing word size of cells).
+Removed top 2 bits (of 3) from port B of cell control_systolic.$eq$/home/vraj/Hardware/TPU/src/control_systolic.v:64$9 ($eq).
+Removed top 31 bits (of 32) from port B of cell control_systolic.$add$/home/vraj/Hardware/TPU/src/control_systolic.v:66$10 ($add).
+Removed top 29 bits (of 32) from port Y of cell control_systolic.$add$/home/vraj/Hardware/TPU/src/control_systolic.v:66$10 ($add).
+Removed top 31 bits (of 32) from port B of cell control_systolic.$add$/home/vraj/Hardware/TPU/src/control_systolic.v:68$11 ($add).
+Removed top 29 bits (of 32) from port Y of cell control_systolic.$add$/home/vraj/Hardware/TPU/src/control_systolic.v:68$11 ($add).
+Removed top 1 bits (of 2) from port B of cell control_systolic.$auto$opt_dff.cc:195:make_patterns_logic$171 ($ne).
+Removed top 29 bits (of 32) from wire control_systolic.$add$/home/vraj/Hardware/TPU/src/control_systolic.v:66$10_Y.
+Removed top 29 bits (of 32) from wire control_systolic.$add$/home/vraj/Hardware/TPU/src/control_systolic.v:68$11_Y.
+
+66. Executing PEEPOPT pass (run peephole optimizers).
+
+67. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+Removed 0 unused cells and 2 unused wires.
+<suppressed ~1 debug messages>
+
+68. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module control_systolic:
+  creating $macc model for $add$/home/vraj/Hardware/TPU/src/control_systolic.v:66$10 ($add).
+  creating $macc model for $add$/home/vraj/Hardware/TPU/src/control_systolic.v:68$11 ($add).
+  creating $macc model for $flatten\systolic_unit_0.\U_00.$add$/home/vraj/Hardware/TPU/src/pe.v:58$24 ($add).
+  creating $macc model for $flatten\systolic_unit_0.\U_00.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 ($mul).
+  creating $macc model for $flatten\systolic_unit_0.\U_01.$add$/home/vraj/Hardware/TPU/src/pe.v:58$24 ($add).
+  creating $macc model for $flatten\systolic_unit_0.\U_01.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 ($mul).
+  creating $macc model for $flatten\systolic_unit_0.\U_10.$add$/home/vraj/Hardware/TPU/src/pe.v:58$24 ($add).
+  creating $macc model for $flatten\systolic_unit_0.\U_10.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 ($mul).
+  creating $macc model for $flatten\systolic_unit_0.\U_11.$add$/home/vraj/Hardware/TPU/src/pe.v:58$24 ($add).
+  creating $macc model for $flatten\systolic_unit_0.\U_11.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 ($mul).
+  merging $macc model for $flatten\systolic_unit_0.\U_11.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 into $flatten\systolic_unit_0.\U_11.$add$/home/vraj/Hardware/TPU/src/pe.v:58$24.
+  merging $macc model for $flatten\systolic_unit_0.\U_10.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 into $flatten\systolic_unit_0.\U_10.$add$/home/vraj/Hardware/TPU/src/pe.v:58$24.
+  merging $macc model for $flatten\systolic_unit_0.\U_01.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 into $flatten\systolic_unit_0.\U_01.$add$/home/vraj/Hardware/TPU/src/pe.v:58$24.
+  merging $macc model for $flatten\systolic_unit_0.\U_00.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 into $flatten\systolic_unit_0.\U_00.$add$/home/vraj/Hardware/TPU/src/pe.v:58$24.
+  creating $alu model for $macc $add$/home/vraj/Hardware/TPU/src/control_systolic.v:68$11.
+  creating $alu model for $macc $add$/home/vraj/Hardware/TPU/src/control_systolic.v:66$10.
+  creating $macc cell for $flatten\systolic_unit_0.\U_10.$add$/home/vraj/Hardware/TPU/src/pe.v:58$24: $auto$alumacc.cc:365:replace_macc$179
+  creating $macc cell for $flatten\systolic_unit_0.\U_00.$add$/home/vraj/Hardware/TPU/src/pe.v:58$24: $auto$alumacc.cc:365:replace_macc$180
+  creating $macc cell for $flatten\systolic_unit_0.\U_01.$add$/home/vraj/Hardware/TPU/src/pe.v:58$24: $auto$alumacc.cc:365:replace_macc$181
+  creating $macc cell for $flatten\systolic_unit_0.\U_11.$add$/home/vraj/Hardware/TPU/src/pe.v:58$24: $auto$alumacc.cc:365:replace_macc$182
+  creating $alu cell for $add$/home/vraj/Hardware/TPU/src/control_systolic.v:66$10: $auto$alumacc.cc:485:replace_alu$183
+  creating $alu cell for $add$/home/vraj/Hardware/TPU/src/control_systolic.v:68$11: $auto$alumacc.cc:485:replace_alu$186
+  created 2 $alu and 4 $macc cells.
+
+69. Executing SHARE pass (SAT-based resource sharing).
+Found 4 cells in module control_systolic that may be considered for resource sharing.
+  Analyzing resource sharing options for $flatten\systolic_unit_0.\U_11.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 ($mul):
+    Found cell that is never activated: $flatten\systolic_unit_0.\U_11.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26
+    Cell is never active. Sharing is pointless, we simply remove it.
+  Analyzing resource sharing options for $flatten\systolic_unit_0.\U_10.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 ($mul):
+    Found cell that is never activated: $flatten\systolic_unit_0.\U_10.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26
+    Cell is never active. Sharing is pointless, we simply remove it.
+  Analyzing resource sharing options for $flatten\systolic_unit_0.\U_01.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 ($mul):
+    Found cell that is never activated: $flatten\systolic_unit_0.\U_01.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26
+    Cell is never active. Sharing is pointless, we simply remove it.
+  Analyzing resource sharing options for $flatten\systolic_unit_0.\U_00.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 ($mul):
+    Found cell that is never activated: $flatten\systolic_unit_0.\U_00.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26
+    Cell is never active. Sharing is pointless, we simply remove it.
+Removing 4 cells in module control_systolic:
+  Removing cell $flatten\systolic_unit_0.\U_00.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 ($mul).
+  Removing cell $flatten\systolic_unit_0.\U_01.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 ($mul).
+  Removing cell $flatten\systolic_unit_0.\U_10.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 ($mul).
+  Removing cell $flatten\systolic_unit_0.\U_11.$mul$/home/vraj/Hardware/TPU/src/pe.v:60$26 ($mul).
+
+70. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+
+71. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+Removed a total of 0 cells.
+
+72. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \control_systolic..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~15 debug messages>
+
+73. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \control_systolic.
+Performed a total of 0 changes.
+
+74. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+Removed a total of 0 cells.
+
+75. Executing OPT_DFF pass (perform DFF optimizations).
+
+76. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+
+77. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+
+78. Executing MEMORY pass.
+
+78.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+78.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+78.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+78.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+78.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+78.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+
+78.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+78.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+78.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+
+78.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+79. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+
+80. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+<suppressed ~11 debug messages>
+
+81. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+Removed a total of 0 cells.
+
+82. Executing OPT_DFF pass (perform DFF optimizations).
+
+83. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+Removed 0 unused cells and 10 unused wires.
+<suppressed ~1 debug messages>
+
+84. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+85. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+
+86. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+Removed a total of 0 cells.
+
+87. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \control_systolic..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~14 debug messages>
+
+88. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \control_systolic.
+Performed a total of 0 changes.
+
+89. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+Removed a total of 0 cells.
+
+90. Executing OPT_SHARE pass.
+
+91. Executing OPT_DFF pass (perform DFF optimizations).
+
+92. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+
+93. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+
+94. Executing TECHMAP pass (map to technology primitives).
+
+94.1. Executing Verilog-2005 frontend: /nix/store/9r0bh7sp051dpm8km8bqlb028anpd3v3-yosys/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/nix/store/9r0bh7sp051dpm8km8bqlb028anpd3v3-yosys/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+94.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $logic_not.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $and.
+Using template $paramod$3ef7d3dd227da7627a99c5e5a6a4deb817573e39\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $logic_or.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $sdff.
+Using extmapper simplemap for cells of type $sdffe.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $reduce_bool.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper maccmap for cells of type $macc.
+  add \systolic_unit_0.U_10.acc_c (16 bits, unsigned)
+  add \systolic_unit_0.stage_a.r_q * \systolic_unit_0.U_00.r_out_b (8x8 bits, unsigned)
+Using extmapper simplemap for cells of type $mux.
+  add \systolic_unit_0.U_00.acc_c (16 bits, unsigned)
+  add \D_a_00 * \D_b_00 (8x8 bits, unsigned)
+Using extmapper simplemap for cells of type $adff.
+  add \systolic_unit_0.U_11.acc_c (16 bits, unsigned)
+  add \systolic_unit_0.U_10.r_out_a * \systolic_unit_0.U_01.r_out_b (8x8 bits, unsigned)
+  add \systolic_unit_0.U_01.acc_c (16 bits, unsigned)
+  add \systolic_unit_0.U_00.r_out_a * \systolic_unit_0.stage_b.r_q (8x8 bits, unsigned)
+Using extmapper simplemap for cells of type $or.
+Using template $paramod\_90_fa\WIDTH=32'00000000000000000000000000010000 for cells of type $fa.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000011 for cells of type $lcu.
+Using extmapper simplemap for cells of type $pos.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$6df0329addda9228fcc2546de2aaf14ad26c98e1\_90_alu for cells of type $alu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010000 for cells of type $lcu.
+No more expansions possible.
+<suppressed ~948 debug messages>
+
+95. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+<suppressed ~1523 debug messages>
+
+96. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+<suppressed ~15 debug messages>
+Removed a total of 5 cells.
+
+97. Executing OPT_DFF pass (perform DFF optimizations).
+
+98. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+Removed 123 unused cells and 540 unused wires.
+<suppressed ~124 debug messages>
+
+99. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+
+100. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+Removed a total of 0 cells.
+
+101. Executing OPT_DFF pass (perform DFF optimizations).
+
+102. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+
+103. Executing ABC pass (technology mapping using ABC).
+
+103.1. Extracting gate netlist of module `\control_systolic' to `<abc-temp-dir>/input.blif'..
+Extracted 2004 gates and 2250 wires to a netlist network with 245 inputs and 183 outputs.
+
+103.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+103.1.2. Re-integrating ABC results.
+ABC RESULTS:               NOT cells:      110
+ABC RESULTS:              XNOR cells:      104
+ABC RESULTS:               NOR cells:       44
+ABC RESULTS:              NAND cells:      165
+ABC RESULTS:             ORNOT cells:       48
+ABC RESULTS:            ANDNOT cells:      601
+ABC RESULTS:               MUX cells:      161
+ABC RESULTS:               AND cells:      155
+ABC RESULTS:               XOR cells:      497
+ABC RESULTS:                OR cells:      218
+ABC RESULTS:        internal signals:     1822
+ABC RESULTS:           input signals:      245
+ABC RESULTS:          output signals:      183
+Removing temp directory.
+
+104. Executing OPT pass (performing simple optimizations).
+
+104.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+<suppressed ~59 debug messages>
+
+104.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+Removed a total of 0 cells.
+
+104.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+104.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+Removed 2 unused cells and 602 unused wires.
+<suppressed ~12 debug messages>
+
+104.5. Finished fast OPT passes.
+
+105. Executing HIERARCHY pass (managing design hierarchy).
+
+105.1. Analyzing design hierarchy..
+Top module:  \control_systolic
+
+105.2. Analyzing design hierarchy..
+Top module:  \control_systolic
+Removed 0 unused modules.
+
+106. Executing CHECK pass (checking for obvious problems).
+Checking module control_systolic...
+Found and reported 0 problems.
+
+107. Printing statistics.
+
+=== control_systolic ===
+
+   Number of wires:               2260
+   Number of wire bits:           3339
+   Number of public wires:         163
+   Number of public wire bits:    1234
+   Number of ports:                 12
+   Number of port bits:             73
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               2371
+     $_ANDNOT_                     601
+     $_AND_                        155
+     $_DFFE_PP0P_                  160
+     $_DFF_PP0_                     85
+     $_MUX_                        161
+     $_NAND_                       165
+     $_NOR_                         44
+     $_NOT_                        108
+     $_ORNOT_                       48
+     $_OR_                         218
+     $_SDFFE_PP0P_                   4
+     $_SDFF_PP0_                     8
+     $_XNOR_                       104
+     $_XOR_                        497
+     $scopeinfo                     13
+
+108. Generating Graphviz representation of design.
+Writing dot description to `/home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/06-yosys-synthesis/primitive_techmap.dot'.
+Dumping module control_systolic to page 1.
+
+109. Executing OPT pass (performing simple optimizations).
+
+109.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+
+109.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+Removed a total of 0 cells.
+
+109.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \control_systolic..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+109.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \control_systolic.
+Performed a total of 0 changes.
+
+109.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\control_systolic'.
+Removed a total of 0 cells.
+
+109.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+109.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+
+109.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module control_systolic.
+
+109.9. Finished OPT passes. (There is nothing left to do.)
+
+110. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+Removed 13 unused cells and 122 unused wires.
+<suppressed ~135 debug messages>
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/tmp/33a8ef319ab44304ab09d8c8a099d348.lib ",
+   "modules": {
+      "\\control_systolic": {
+         "num_wires":         2138,
+         "num_wire_bits":     2403,
+         "num_pub_wires":     41,
+         "num_pub_wire_bits": 298,
+         "num_ports":         12,
+         "num_port_bits":     73,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2358,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 601,
+            "$_AND_": 155,
+            "$_DFFE_PP0P_": 160,
+            "$_DFF_PP0_": 85,
+            "$_MUX_": 161,
+            "$_NAND_": 165,
+            "$_NOR_": 44,
+            "$_NOT_": 108,
+            "$_ORNOT_": 48,
+            "$_OR_": 218,
+            "$_SDFFE_PP0P_": 4,
+            "$_SDFF_PP0_": 8,
+            "$_XNOR_": 104,
+            "$_XOR_": 497
+         }
+      }
+   },
+      "design": {
+         "num_wires":         2138,
+         "num_wire_bits":     2403,
+         "num_pub_wires":     41,
+         "num_pub_wire_bits": 298,
+         "num_ports":         12,
+         "num_port_bits":     73,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2358,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 601,
+            "$_AND_": 155,
+            "$_DFFE_PP0P_": 160,
+            "$_DFF_PP0_": 85,
+            "$_MUX_": 161,
+            "$_NAND_": 165,
+            "$_NOR_": 44,
+            "$_NOT_": 108,
+            "$_ORNOT_": 48,
+            "$_OR_": 218,
+            "$_SDFFE_PP0P_": 4,
+            "$_SDFF_PP0_": 8,
+            "$_XNOR_": 104,
+            "$_XOR_": 497
+         }
+      }
+}
+
+111. Printing statistics.
+
+=== control_systolic ===
+
+   Number of wires:               2138
+   Number of wire bits:           2403
+   Number of public wires:          41
+   Number of public wire bits:     298
+   Number of ports:                 12
+   Number of port bits:             73
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               2358
+     $_ANDNOT_                     601
+     $_AND_                        155
+     $_DFFE_PP0P_                  160
+     $_DFF_PP0_                     85
+     $_MUX_                        161
+     $_NAND_                       165
+     $_NOR_                         44
+     $_NOT_                        108
+     $_ORNOT_                       48
+     $_OR_                         218
+     $_SDFFE_PP0P_                   4
+     $_SDFF_PP0_                     8
+     $_XNOR_                       104
+     $_XOR_                        497
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+   Area for cell type $_DFF_PP0_ is unknown!
+   Area for cell type $_DFFE_PP0P_ is unknown!
+   Area for cell type $_SDFF_PP0_ is unknown!
+   Area for cell type $_SDFFE_PP0P_ is unknown!
+
+[INFO] Applying tri-state buffer mapping from '/home/vraj/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v'…
+
+112. Executing TECHMAP pass (map to technology primitives).
+
+112.1. Executing Verilog-2005 frontend: /home/vraj/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v
+Parsing Verilog input from `/home/vraj/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v' to AST representation.
+Generating RTLIL representation for module `\$_TBUF_'.
+Successfully finished Verilog frontend.
+
+112.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~3 debug messages>
+
+113. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+[INFO] Applying latch mapping from '/home/vraj/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v'…
+
+114. Executing TECHMAP pass (map to technology primitives).
+
+114.1. Executing Verilog-2005 frontend: /home/vraj/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v
+Parsing Verilog input from `/home/vraj/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DLATCH_P_'.
+Generating RTLIL representation for module `\$_DLATCH_N_'.
+Successfully finished Verilog frontend.
+
+114.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+115. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+116. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_2 (noninv, pins=3, area=21.27) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__dfbbn_2 (noninv, pins=6, area=35.03) is a direct match for cell type $_DFFSR_NNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_2 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_2 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    \sky130_fd_sc_hd__dfbbn_2 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+116.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `\control_systolic':
+  mapped 245 $_DFF_PN0_ cells to \sky130_fd_sc_hd__dfrtp_2 cells.
+  mapped 12 $_DFF_P_ cells to \sky130_fd_sc_hd__dfxtp_2 cells.
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/tmp/33a8ef319ab44304ab09d8c8a099d348.lib ",
+   "modules": {
+      "\\control_systolic": {
+         "num_wires":         2559,
+         "num_wire_bits":     2824,
+         "num_pub_wires":     41,
+         "num_pub_wire_bits": 298,
+         "num_ports":         12,
+         "num_port_bits":     73,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2779,
+         "area":              6692.668800,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 601,
+            "$_AND_": 155,
+            "$_MUX_": 337,
+            "$_NAND_": 165,
+            "$_NOR_": 44,
+            "$_NOT_": 353,
+            "$_ORNOT_": 48,
+            "$_OR_": 218,
+            "$_XNOR_": 104,
+            "$_XOR_": 497,
+            "sky130_fd_sc_hd__dfrtp_2": 245,
+            "sky130_fd_sc_hd__dfxtp_2": 12
+         }
+      }
+   },
+      "design": {
+         "num_wires":         2559,
+         "num_wire_bits":     2824,
+         "num_pub_wires":     41,
+         "num_pub_wire_bits": 298,
+         "num_ports":         12,
+         "num_port_bits":     73,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2779,
+         "area":              6692.668800,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 601,
+            "$_AND_": 155,
+            "$_MUX_": 337,
+            "$_NAND_": 165,
+            "$_NOR_": 44,
+            "$_NOT_": 353,
+            "$_ORNOT_": 48,
+            "$_OR_": 218,
+            "$_XNOR_": 104,
+            "$_XOR_": 497,
+            "sky130_fd_sc_hd__dfrtp_2": 245,
+            "sky130_fd_sc_hd__dfxtp_2": 12
+         }
+      }
+}
+
+117. Printing statistics.
+
+=== control_systolic ===
+
+   Number of wires:               2559
+   Number of wire bits:           2824
+   Number of public wires:          41
+   Number of public wire bits:     298
+   Number of ports:                 12
+   Number of port bits:             73
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               2779
+     $_ANDNOT_                     601
+     $_AND_                        155
+     $_MUX_                        337
+     $_NAND_                       165
+     $_NOR_                         44
+     $_NOT_                        353
+     $_ORNOT_                       48
+     $_OR_                         218
+     $_XNOR_                       104
+     $_XOR_                        497
+     sky130_fd_sc_hd__dfrtp_2      245
+     sky130_fd_sc_hd__dfxtp_2       12
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+
+   Chip area for module '\control_systolic': 6692.668800
+     of which used for sequential elements: 6692.668800 (100.00%)
+
+[INFO] Using generated ABC script '/home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/06-yosys-synthesis/AREA_0.abc'…
+
+118. Executing ABC pass (technology mapping using ABC).
+
+118.1. Extracting gate netlist of module `\control_systolic' to `/tmp/yosys-abc-4Ijbkf/input.blif'..
+Extracted 2522 gates and 2802 wires to a netlist network with 279 inputs and 419 outputs.
+
+118.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f /tmp/yosys-abc-4Ijbkf/abc.script 2>&1
+ABC: ABC command line: "source /tmp/yosys-abc-4Ijbkf/abc.script".
+ABC: 
+ABC: + read_blif /tmp/yosys-abc-4Ijbkf/input.blif 
+ABC: + read_lib -w /home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/tmp/33a8ef319ab44304ab09d8c8a099d348.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.03 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/tmp/33a8ef319ab44304ab09d8c8a099d348.lib" has 175 cells (17 skipped: 14 seq; 3 tri-state; 0 no func; 0 dont_use).  Time =     0.05 sec
+ABC: Memory =    9.54 MB. Time =     0.05 sec
+ABC: Warning: Detected 2 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + read_constr -v /home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/06-yosys-synthesis/synthesis.abc.sdc 
+ABC: Setting driving cell to be "sky130_fd_sc_hd__inv_2/Y".
+ABC: Setting output load to be 33.442001.
+ABC: + source /home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/06-yosys-synthesis/AREA_0.abc 
+ABC: Error: The network is combinational.
+ABC: Cannot find the default PI driving cell (sky130_fd_sc_hd__inv_2/Y) in the library.
+ABC: WireLoad = "none"  Gates =   2133 ( 12.6 %)   Cap = 13.8 ff (  4.0 %)   Area =    19631.33 ( 79.1 %)   Delay =  4948.00 ps  (  1.3 %)               
+ABC: Path  0 --     181 : 0   86 pi                       A =   0.00  Df =   0.0   -0.0 ps  S =   0.0 ps  Cin =  0.0 ff  Cout = 294.4 ff  Cmax =   0.0 ff  G =    0  
+ABC: Path  1 --    2065 : 2    1 sky130_fd_sc_hd__or2_2   A =   6.26  Df =4664.8 -891.8 ps  S =  52.3 ps  Cin =  1.5 ff  Cout =   2.4 ff  Cmax = 299.4 ff  G =  159  
+ABC: Path  2 --    2070 : 5    1 sky130_fd_sc_hd__o221a_2 A =  11.26  Df =4948.0 -976.5 ps  S = 195.6 ps  Cin =  2.3 ff  Cout =  33.4 ff  Cmax = 281.1 ff  G = 1424  
+ABC: Start-point = pi180 (\systolic_unit_0.U_01.switch).  End-point = po113 ($auto$rtlil.cc:2739:MuxGate$6815).
+ABC: netlist                       : i/o =  279/  419  lat =    0  nd =  2133  edge =   5514  area =19633.91  delay =17.00  lev = 17
+ABC: + write_blif /tmp/yosys-abc-4Ijbkf/output.blif 
+
+118.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__nor4_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__or4b_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o221ai_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o32a_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__and4b_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o31ai_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a2111o_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a41o_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a32o_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__nand3b_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a31oi_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a211oi_2 cells:       11
+ABC RESULTS:   sky130_fd_sc_hd__or4_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o22ai_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nor3b_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o21bai_2 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__o311a_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a2bb2o_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__and4bb_2 cells:       12
+ABC RESULTS:   sky130_fd_sc_hd__o2bb2a_2 cells:       12
+ABC RESULTS:   sky130_fd_sc_hd__nor3_2 cells:       19
+ABC RESULTS:   sky130_fd_sc_hd__o21ba_2 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__a21bo_2 cells:       26
+ABC RESULTS:   sky130_fd_sc_hd__a32oi_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__and4_2 cells:       43
+ABC RESULTS:   sky130_fd_sc_hd__a22oi_2 cells:       35
+ABC RESULTS:   sky130_fd_sc_hd__or3_2 cells:       28
+ABC RESULTS:   sky130_fd_sc_hd__o31a_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__nand2b_2 cells:       34
+ABC RESULTS:   sky130_fd_sc_hd__o22a_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a211o_2 cells:       13
+ABC RESULTS:   sky130_fd_sc_hd__mux2_1 cells:      143
+ABC RESULTS:   sky130_fd_sc_hd__nand4_2 cells:       28
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_2 cells:      199
+ABC RESULTS:   sky130_fd_sc_hd__a22o_2 cells:      143
+ABC RESULTS:   sky130_fd_sc_hd__a31o_2 cells:       34
+ABC RESULTS:   sky130_fd_sc_hd__o221a_2 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__or3b_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__and3b_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__and2_2 cells:       70
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_2 cells:       28
+ABC RESULTS:   sky130_fd_sc_hd__nor2_2 cells:      125
+ABC RESULTS:   sky130_fd_sc_hd__a21boi_2 cells:       18
+ABC RESULTS:   sky130_fd_sc_hd__o21a_2 cells:       34
+ABC RESULTS:   sky130_fd_sc_hd__or2_2 cells:       75
+ABC RESULTS:   sky130_fd_sc_hd__nand2_2 cells:      168
+ABC RESULTS:   sky130_fd_sc_hd__xor2_2 cells:       76
+ABC RESULTS:   sky130_fd_sc_hd__a221o_2 cells:       13
+ABC RESULTS:   sky130_fd_sc_hd__o211a_2 cells:       16
+ABC RESULTS:   sky130_fd_sc_hd__and2b_2 cells:       42
+ABC RESULTS:   sky130_fd_sc_hd__o211ai_2 cells:       10
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_2 cells:       74
+ABC RESULTS:   sky130_fd_sc_hd__a21o_2 cells:      124
+ABC RESULTS:   sky130_fd_sc_hd__nand3_2 cells:       62
+ABC RESULTS:   sky130_fd_sc_hd__and3_2 cells:       84
+ABC RESULTS:   sky130_fd_sc_hd__inv_2 cells:      268
+ABC RESULTS:        internal signals:     2104
+ABC RESULTS:           input signals:      279
+ABC RESULTS:          output signals:      419
+Removing temp directory.
+
+119. Executing SETUNDEF pass (replace undef values with defined constants).
+
+120. Executing HILOMAP pass (mapping to constant drivers).
+
+121. Executing SPLITNETS pass (splitting up multi-bit signals).
+
+122. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \control_systolic..
+Removed 0 unused cells and 2807 unused wires.
+<suppressed ~1 debug messages>
+
+123. Executing INSBUF pass (insert buffer cells for connected wires).
+
+124. Executing CHECK pass (checking for obvious problems).
+Checking module control_systolic...
+Found and reported 0 problems.
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/tmp/33a8ef319ab44304ab09d8c8a099d348.lib ",
+   "modules": {
+      "\\control_systolic": {
+         "num_wires":         2368,
+         "num_wire_bits":     2429,
+         "num_pub_wires":     237,
+         "num_pub_wire_bits": 298,
+         "num_ports":         12,
+         "num_port_bits":     73,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2390,
+         "area":              26323.996800,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_2": 1,
+            "sky130_fd_sc_hd__a211o_2": 13,
+            "sky130_fd_sc_hd__a211oi_2": 11,
+            "sky130_fd_sc_hd__a21bo_2": 26,
+            "sky130_fd_sc_hd__a21boi_2": 18,
+            "sky130_fd_sc_hd__a21o_2": 124,
+            "sky130_fd_sc_hd__a21oi_2": 74,
+            "sky130_fd_sc_hd__a221o_2": 13,
+            "sky130_fd_sc_hd__a22o_2": 143,
+            "sky130_fd_sc_hd__a22oi_2": 35,
+            "sky130_fd_sc_hd__a2bb2o_2": 1,
+            "sky130_fd_sc_hd__a31o_2": 34,
+            "sky130_fd_sc_hd__a31oi_2": 2,
+            "sky130_fd_sc_hd__a32o_2": 6,
+            "sky130_fd_sc_hd__a32oi_2": 1,
+            "sky130_fd_sc_hd__a41o_2": 2,
+            "sky130_fd_sc_hd__and2_2": 70,
+            "sky130_fd_sc_hd__and2b_2": 42,
+            "sky130_fd_sc_hd__and3_2": 84,
+            "sky130_fd_sc_hd__and3b_2": 5,
+            "sky130_fd_sc_hd__and4_2": 43,
+            "sky130_fd_sc_hd__and4b_2": 1,
+            "sky130_fd_sc_hd__and4bb_2": 12,
+            "sky130_fd_sc_hd__dfrtp_2": 245,
+            "sky130_fd_sc_hd__dfxtp_2": 12,
+            "sky130_fd_sc_hd__inv_2": 268,
+            "sky130_fd_sc_hd__mux2_1": 143,
+            "sky130_fd_sc_hd__nand2_2": 168,
+            "sky130_fd_sc_hd__nand2b_2": 34,
+            "sky130_fd_sc_hd__nand3_2": 62,
+            "sky130_fd_sc_hd__nand3b_2": 3,
+            "sky130_fd_sc_hd__nand4_2": 28,
+            "sky130_fd_sc_hd__nor2_2": 125,
+            "sky130_fd_sc_hd__nor3_2": 19,
+            "sky130_fd_sc_hd__nor3b_2": 2,
+            "sky130_fd_sc_hd__nor4_2": 1,
+            "sky130_fd_sc_hd__o211a_2": 16,
+            "sky130_fd_sc_hd__o211ai_2": 10,
+            "sky130_fd_sc_hd__o21a_2": 34,
+            "sky130_fd_sc_hd__o21ai_2": 28,
+            "sky130_fd_sc_hd__o21ba_2": 8,
+            "sky130_fd_sc_hd__o21bai_2": 7,
+            "sky130_fd_sc_hd__o221a_2": 8,
+            "sky130_fd_sc_hd__o221ai_2": 1,
+            "sky130_fd_sc_hd__o22a_2": 2,
+            "sky130_fd_sc_hd__o22ai_2": 1,
+            "sky130_fd_sc_hd__o2bb2a_2": 12,
+            "sky130_fd_sc_hd__o311a_2": 1,
+            "sky130_fd_sc_hd__o31a_2": 3,
+            "sky130_fd_sc_hd__o31ai_2": 2,
+            "sky130_fd_sc_hd__o32a_2": 1,
+            "sky130_fd_sc_hd__or2_2": 75,
+            "sky130_fd_sc_hd__or3_2": 28,
+            "sky130_fd_sc_hd__or3b_2": 5,
+            "sky130_fd_sc_hd__or4_2": 1,
+            "sky130_fd_sc_hd__or4b_2": 1,
+            "sky130_fd_sc_hd__xnor2_2": 199,
+            "sky130_fd_sc_hd__xor2_2": 76
+         }
+      }
+   },
+      "design": {
+         "num_wires":         2368,
+         "num_wire_bits":     2429,
+         "num_pub_wires":     237,
+         "num_pub_wire_bits": 298,
+         "num_ports":         12,
+         "num_port_bits":     73,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         2390,
+         "area":              26323.996800,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_2": 1,
+            "sky130_fd_sc_hd__a211o_2": 13,
+            "sky130_fd_sc_hd__a211oi_2": 11,
+            "sky130_fd_sc_hd__a21bo_2": 26,
+            "sky130_fd_sc_hd__a21boi_2": 18,
+            "sky130_fd_sc_hd__a21o_2": 124,
+            "sky130_fd_sc_hd__a21oi_2": 74,
+            "sky130_fd_sc_hd__a221o_2": 13,
+            "sky130_fd_sc_hd__a22o_2": 143,
+            "sky130_fd_sc_hd__a22oi_2": 35,
+            "sky130_fd_sc_hd__a2bb2o_2": 1,
+            "sky130_fd_sc_hd__a31o_2": 34,
+            "sky130_fd_sc_hd__a31oi_2": 2,
+            "sky130_fd_sc_hd__a32o_2": 6,
+            "sky130_fd_sc_hd__a32oi_2": 1,
+            "sky130_fd_sc_hd__a41o_2": 2,
+            "sky130_fd_sc_hd__and2_2": 70,
+            "sky130_fd_sc_hd__and2b_2": 42,
+            "sky130_fd_sc_hd__and3_2": 84,
+            "sky130_fd_sc_hd__and3b_2": 5,
+            "sky130_fd_sc_hd__and4_2": 43,
+            "sky130_fd_sc_hd__and4b_2": 1,
+            "sky130_fd_sc_hd__and4bb_2": 12,
+            "sky130_fd_sc_hd__dfrtp_2": 245,
+            "sky130_fd_sc_hd__dfxtp_2": 12,
+            "sky130_fd_sc_hd__inv_2": 268,
+            "sky130_fd_sc_hd__mux2_1": 143,
+            "sky130_fd_sc_hd__nand2_2": 168,
+            "sky130_fd_sc_hd__nand2b_2": 34,
+            "sky130_fd_sc_hd__nand3_2": 62,
+            "sky130_fd_sc_hd__nand3b_2": 3,
+            "sky130_fd_sc_hd__nand4_2": 28,
+            "sky130_fd_sc_hd__nor2_2": 125,
+            "sky130_fd_sc_hd__nor3_2": 19,
+            "sky130_fd_sc_hd__nor3b_2": 2,
+            "sky130_fd_sc_hd__nor4_2": 1,
+            "sky130_fd_sc_hd__o211a_2": 16,
+            "sky130_fd_sc_hd__o211ai_2": 10,
+            "sky130_fd_sc_hd__o21a_2": 34,
+            "sky130_fd_sc_hd__o21ai_2": 28,
+            "sky130_fd_sc_hd__o21ba_2": 8,
+            "sky130_fd_sc_hd__o21bai_2": 7,
+            "sky130_fd_sc_hd__o221a_2": 8,
+            "sky130_fd_sc_hd__o221ai_2": 1,
+            "sky130_fd_sc_hd__o22a_2": 2,
+            "sky130_fd_sc_hd__o22ai_2": 1,
+            "sky130_fd_sc_hd__o2bb2a_2": 12,
+            "sky130_fd_sc_hd__o311a_2": 1,
+            "sky130_fd_sc_hd__o31a_2": 3,
+            "sky130_fd_sc_hd__o31ai_2": 2,
+            "sky130_fd_sc_hd__o32a_2": 1,
+            "sky130_fd_sc_hd__or2_2": 75,
+            "sky130_fd_sc_hd__or3_2": 28,
+            "sky130_fd_sc_hd__or3b_2": 5,
+            "sky130_fd_sc_hd__or4_2": 1,
+            "sky130_fd_sc_hd__or4b_2": 1,
+            "sky130_fd_sc_hd__xnor2_2": 199,
+            "sky130_fd_sc_hd__xor2_2": 76
+         }
+      }
+}
+
+125. Printing statistics.
+
+=== control_systolic ===
+
+   Number of wires:               2368
+   Number of wire bits:           2429
+   Number of public wires:         237
+   Number of public wire bits:     298
+   Number of ports:                 12
+   Number of port bits:             73
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               2390
+     sky130_fd_sc_hd__a2111o_2       1
+     sky130_fd_sc_hd__a211o_2       13
+     sky130_fd_sc_hd__a211oi_2      11
+     sky130_fd_sc_hd__a21bo_2       26
+     sky130_fd_sc_hd__a21boi_2      18
+     sky130_fd_sc_hd__a21o_2       124
+     sky130_fd_sc_hd__a21oi_2       74
+     sky130_fd_sc_hd__a221o_2       13
+     sky130_fd_sc_hd__a22o_2       143
+     sky130_fd_sc_hd__a22oi_2       35
+     sky130_fd_sc_hd__a2bb2o_2       1
+     sky130_fd_sc_hd__a31o_2        34
+     sky130_fd_sc_hd__a31oi_2        2
+     sky130_fd_sc_hd__a32o_2         6
+     sky130_fd_sc_hd__a32oi_2        1
+     sky130_fd_sc_hd__a41o_2         2
+     sky130_fd_sc_hd__and2_2        70
+     sky130_fd_sc_hd__and2b_2       42
+     sky130_fd_sc_hd__and3_2        84
+     sky130_fd_sc_hd__and3b_2        5
+     sky130_fd_sc_hd__and4_2        43
+     sky130_fd_sc_hd__and4b_2        1
+     sky130_fd_sc_hd__and4bb_2      12
+     sky130_fd_sc_hd__dfrtp_2      245
+     sky130_fd_sc_hd__dfxtp_2       12
+     sky130_fd_sc_hd__inv_2        268
+     sky130_fd_sc_hd__mux2_1       143
+     sky130_fd_sc_hd__nand2_2      168
+     sky130_fd_sc_hd__nand2b_2      34
+     sky130_fd_sc_hd__nand3_2       62
+     sky130_fd_sc_hd__nand3b_2       3
+     sky130_fd_sc_hd__nand4_2       28
+     sky130_fd_sc_hd__nor2_2       125
+     sky130_fd_sc_hd__nor3_2        19
+     sky130_fd_sc_hd__nor3b_2        2
+     sky130_fd_sc_hd__nor4_2         1
+     sky130_fd_sc_hd__o211a_2       16
+     sky130_fd_sc_hd__o211ai_2      10
+     sky130_fd_sc_hd__o21a_2        34
+     sky130_fd_sc_hd__o21ai_2       28
+     sky130_fd_sc_hd__o21ba_2        8
+     sky130_fd_sc_hd__o21bai_2       7
+     sky130_fd_sc_hd__o221a_2        8
+     sky130_fd_sc_hd__o221ai_2       1
+     sky130_fd_sc_hd__o22a_2         2
+     sky130_fd_sc_hd__o22ai_2        1
+     sky130_fd_sc_hd__o2bb2a_2      12
+     sky130_fd_sc_hd__o311a_2        1
+     sky130_fd_sc_hd__o31a_2         3
+     sky130_fd_sc_hd__o31ai_2        2
+     sky130_fd_sc_hd__o32a_2         1
+     sky130_fd_sc_hd__or2_2         75
+     sky130_fd_sc_hd__or3_2         28
+     sky130_fd_sc_hd__or3b_2         5
+     sky130_fd_sc_hd__or4_2          1
+     sky130_fd_sc_hd__or4b_2         1
+     sky130_fd_sc_hd__xnor2_2      199
+     sky130_fd_sc_hd__xor2_2        76
+
+   Chip area for module '\control_systolic': 26323.996800
+     of which used for sequential elements: 6692.668800 (25.42%)
+
+126. Executing Verilog backend.
+Dumping module `\control_systolic'.
+
+127. Executing JSON backend.

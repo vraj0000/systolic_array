@@ -1,0 +1,13 @@
+{
+  "DESIGN_NAME": "control_systolic",
+  "VERILOG_FILES": [
+    "dir::src/control_systolic.v",
+    "dir::src/systolic.v",
+    "dir::src/pe.v",
+    "dir::src/dff.v"
+  ],
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 10,
+  "FP_SIZING": "relative",
+  "FP_CORE_UTIL": 40
+}
