@@ -1,0 +1,5 @@
+`verilator_config
+lint_off -rule DECLFILENAME
+lint_off -rule EOFNEWLINE
+lint_off -rule UNDRIVEN -file "/home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/tmp/3b8b2d7ce74142939c50c87e32e7420e.bb.v"
+lint_off -rule UNUSEDSIGNAL -file "/home/vraj/Hardware/TPU/runs/RUN_2026-09-14_15-30-22/tmp/3b8b2d7ce74142939c50c87e32e7420e.bb.v"

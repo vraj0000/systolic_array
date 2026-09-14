@@ -1,0 +1,21 @@
+# read all your RTL sources
+read_verilog control_systolic.v
+read_verilog systolic.v
+read_verilog pe.v
+read_verilog dff.v
+
+# set the top-level module
+hierarchy -top control_systolic
+
+# generic synthesis passes
+proc; opt; fsm; opt; memory; opt
+techmap; opt
+
+# print a summary (cell counts, area proxy)
+stat
+
+# optional: map to a specific technology / generic gates for reporting
+# synth -top control_systolic
+
+# write out a gate-level netlist
+write_verilog synth_out.v

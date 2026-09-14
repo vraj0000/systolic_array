@@ -1,0 +1,82 @@
+[*]
+[*] GTKWave Analyzer v3.3.128 (w)1999-2026 BSI
+[*] Sat Sep 12 23:26:59 2026
+[*]
+[dumpfile] "/home/vraj/Hardware/systolic_array/Systolic_OS_PE/waveform.vcd"
+[dumpfile_mtime] "Sat Sep 12 23:22:39 2026"
+[dumpfile_size] 14081
+[savefile] "/home/vraj/Hardware/systolic_array/Systolic_OS_PE/out_c.gtkw"
+[timestart] 0
+[size] 1912 1006
+[pos] -960 -4
+*-13.800000 55000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb.
+[treeopen] tb.dut.
+[sst_width] 290
+[signals_width] 158
+[sst_expanded] 1
+[sst_vpaned_height] 303
+@24
+[color] 3
+tb.dut.U_00.in_a[7:0]
+[color] 3
+tb.dut.U_00.in_b[7:0]
+[color] 3
+tb.dut.U_00.acc_0[15:0]
+[color] 3
+tb.dut.U_00.acc_1[15:0]
+[color] 3
+tb.dut.U_00.drain_0
+[color] 3
+tb.dut.U_00.drain_1
+[color] 3
+tb.dut.U_00.switch
+[color] 6
+tb.dut.U_00.clk
+[color] 3
+tb.dut.U_10.in_a[7:0]
+[color] 3
+tb.dut.U_10.in_b[7:0]
+[color] 3
+tb.dut.U_10.acc_0[15:0]
+[color] 3
+tb.dut.U_10.acc_1[15:0]
+[color] 3
+tb.dut.U_10.drain_0
+[color] 3
+tb.dut.U_10.drain_1
+[color] 3
+tb.dut.U_10.switch
+[color] 6
+tb.dut.U_10.clk
+tb.dut.U_01.in_a[7:0]
+tb.dut.U_01.in_b[7:0]
+tb.dut.U_01.acc_0[15:0]
+tb.dut.U_01.acc_1[15:0]
+tb.dut.U_01.drain_0
+tb.dut.U_01.drain_1
+tb.dut.U_01.switch
+[color] 6
+tb.dut.U_01.clk
+tb.dut.U_11.in_a[7:0]
+tb.dut.U_11.in_b[7:0]
+tb.dut.U_11.acc_0[15:0]
+tb.dut.U_11.acc_1[15:0]
+tb.dut.U_11.drain_0
+tb.dut.U_11.drain_1
+tb.dut.U_11.switch
+@28
+[color] 6
+tb.dut.U_11.clk
+@25
+[color] 1
+tb.dut.out_c[0][15:0]
+@24
+[color] 1
+tb.dut.out_c[1][15:0]
+[color] 1
+tb.dut.out_c_r[0][15:0]
+[color] 1
+tb.dut.out_c_r[1][15:0]
+[pattern_trace] 1
+[pattern_trace] 0
