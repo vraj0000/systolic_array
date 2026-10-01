@@ -1,0 +1,15 @@
+  +++++++++++ Starting the 2 x 2 Double Buffer Multiplication +++++++++
+    20.00ns INFO     test                               Number of Randomly Generated Matrix = 18
+   430.00ns INFO     test                               All Values are True !!!!!!!
+   430.00ns INFO     test                               First input at 20.0ns, first output at 80.0ns
+   430.00ns INFO     test                               Latency = 6 cycles
+   430.00ns INFO     test                               First input at 20.0ns, last output at 410.0ns
+   430.00ns INFO     test                               Latency = 41 cycles
+   430.00ns INFO     cocotb.regression                  test_systolic.systolic_compute passed
+   430.00ns INFO     cocotb.regression                  ****************************************************************************************
+                                                        ** TEST                            STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                                                        ****************************************************************************************
+                                                        ** test_systolic.systolic_compute   PASS         430.00           0.04      11992.52  **
+                                                        ****************************************************************************************
+                                                        ** TESTS=1 PASS=1 FAIL=0 SKIP=0                  430.00           0.04      11793.05  **
+                                                        ****************************************************************************************
